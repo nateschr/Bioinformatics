@@ -15,20 +15,21 @@ gc_dict = {}
 
 # connect sequence label to sequence data
 for i in seq_c:
+	# grab seq label
     id = i[0:13]
+    # grab seq separate from label
     id_seq = i[13:]
     seq_dict[id] = id_seq
 
 for key, value in seq_dict.items():
     seq_len = len(value)
     gc_content = value.count('G') + value.count('C')
-    gc_content = round((gc_content / seq_len), 3) * 100
+    gc_content = round((gc_content / seq_len), 6) * 100
     gc_dict[key] = gc_content
 
-    print('GC content of', key, 'is', gc_content)
-    print(gc_dict)
+print(gc_dict)
 
-#for key, value in gc_dict.items():
+# get max gc_value
 gc_max = max(gc_dict, key=gc_dict.get)
 
 print(gc_max)
